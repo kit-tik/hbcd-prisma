@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+model ColdRoom {
+  id               String      @id @default(cuid())
+  createdAt        DateTime    @default(now())
+  RID              String      @unique
+  roomType         String
+  coldRoomAddress  String?
+  tambon           String?
+  amper            String?
+  province         String
+  zip              String
+  productType      String?
+  roomWidth        Decimal
+  roomLength       Decimal
+  roomHeight       Decimal
+  maxTemp          Decimal?
+  minTemp          Decimal?
+  constructionType String
+  year             Int?
+  panelClass       String      @default("EPS")
+  foamMass         Decimal
+  bizID            String
+  company          HBCDCompany @relation(fields: [bizID], references: [bizID])
+}
+
+model HBCDCompany {
+  id            String     @id @default(cuid())
+  createdAt     DateTime   @default(now())
+  name          String
+  bizType       String?
+  bizID         String     @unique
+  licenseNo     String?
+  officeAddress String
+  officeTelNo   String?
+  province      String
+  coldRooms     ColdRoom[]
+}
