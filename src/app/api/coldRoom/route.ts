@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 // FETCH ALL ColdRoom
 export const GET = async () => {
   try {
-    const coldRooms = await prisma.ColdRoom.findMany({
+    const coldRooms = await prisma.coldRoom.findMany({
       include: {
         company: {select: {name:true}}
       },

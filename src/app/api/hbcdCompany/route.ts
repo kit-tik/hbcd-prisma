@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 // FETCH ALL HBCDCompany
 export const GET = async () => {
   try {
-    const hbcdCompanies = await prisma.HBCDCompany.findMany({
+    const hbcdCompanies = await prisma.hBCDCompany.findMany({
         include: {
             _count: {
                 select: {

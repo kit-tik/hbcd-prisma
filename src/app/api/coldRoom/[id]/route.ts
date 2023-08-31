@@ -9,7 +9,7 @@ export const GET = async (
   const { id } = params;
 
   try {
-    const coldRoom = await prisma.ColdRoom.findUnique({
+    const coldRoom = await prisma.coldRoom.findUnique({
       where: {
         RID: id,
       },

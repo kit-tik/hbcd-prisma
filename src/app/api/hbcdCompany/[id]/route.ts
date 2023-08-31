@@ -9,7 +9,7 @@ export const GET = async (
   const { id } = params;
 
   try {
-    const coldRoom = await prisma.HBCDCompany.findUnique({
+    const coldRoom = await prisma.hBCDCompany.findUnique({
       where: {
         bizID: id,
       },
