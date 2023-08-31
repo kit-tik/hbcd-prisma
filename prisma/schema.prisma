@@ -12,7 +12,7 @@ datasource db {
 }
 
 model ColdRoom {
-  id               String      @id @default(cuid())
+  id               String      @unique @id @default(cuid())
   createdAt        DateTime    @default(now())
   RID              String      @unique
   roomType         String
@@ -36,7 +36,7 @@ model ColdRoom {
 }
 
 model HBCDCompany {
-  id            String     @id @default(cuid())
+  id            String     @unique @id @default(cuid())
   createdAt     DateTime   @default(now())
   name          String
   bizType       String?
